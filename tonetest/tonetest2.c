@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     while (true) {
         if (sleepC < 2) {
             sleepC++;
-            sleep(1)
+            sleep(1);
         } else {
             sleepC = 0;
             if (inc) {
