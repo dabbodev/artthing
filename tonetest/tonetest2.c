@@ -32,7 +32,7 @@ void SetAlsaMasterVolume(long volume)
     snd_mixer_close(handle);
 }
 
-void CheckMOC() {
+bool CheckMOC() {
     regex_t number;
     regex_t name;
     regcomp(&number, "^[0-9]+$", 0);
@@ -47,7 +47,7 @@ void CheckMOC() {
               int fd = open("cmdline", O_RDONLY);
               buf[read(fd, buf, (sizeof buf)-1)] = '\0';
               if(regexec(&name, buf, 0, 0, 0)==0)
-                    return true
+                    return true;
               close(fd);
               chdir("..");
          }
