@@ -1,38 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <alsa/mixer.h>
 #define MAX_CMN_LEN 100
-
-int main(int argc, char *argv[])
-{
-    int sleepC = 0;
-    int cVol = 100;
-    int inc = false;
-    SetAlsaMasterVolume(100);
-    while (true) {
-        if (!CheckMOC()) {
-            system("mocp -p tone.wav");
-        }
-        if (sleepC < 10) {
-            sleepC++;
-        } else {
-            sleepC = 0;
-            if (inc) {
-                cVol = cVol + 5;
-            } else {
-                cVol = cVol - 5;
-            }
-            if (cVol == 100) {
-                inc = false;
-            }
-            if (cVol == 0) {
-                inc = true;
-            }
-            SetAlsaMasterVolume(cVol);
-        }
-    }
-    return 0;
-}
 
 void SetAlsaMasterVolume(long volume)
 {
@@ -81,3 +51,35 @@ void CheckMOC() {
     closedir(proc);
     return false;
 }
+
+int main(int argc, char *argv[])
+{
+    int sleepC = 0;
+    int cVol = 100;
+    int inc = false;
+    SetAlsaMasterVolume(100);
+    while (true) {
+        if (!CheckMOC()) {
+            system("mocp -p tone.wav");
+        }
+        if (sleepC < 10) {
+            sleepC++;
+        } else {
+            sleepC = 0;
+            if (inc) {
+                cVol = cVol + 5;
+            } else {
+                cVol = cVol - 5;
+            }
+            if (cVol == 100) {
+                inc = false;
+            }
+            if (cVol == 0) {
+                inc = true;
+            }
+            SetAlsaMasterVolume(cVol);
+        }
+    }
+    return 0;
+}
+
