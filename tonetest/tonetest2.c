@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <regex.h>
 #include <alsa/asoundlib.h>
 #include <alsa/mixer.h>
 #define MAX_CMN_LEN 100
