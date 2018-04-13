@@ -71,9 +71,9 @@ int main(int argc, char *argv[])
         } else {
             sleepC = 0;
             if (inc) {
-                cVol = cVol + 5;
+                cVol = cVol + 20;
             } else {
-                cVol = cVol - 5;
+                cVol = cVol - 20;
             }
             if (cVol == 100) {
                 inc = false;
