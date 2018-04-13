@@ -4,6 +4,7 @@
 #include <stdbool.h>
 #include <regex.h>
 #include <dirent.h>
+#include <unistd.h>
 #include <alsa/asoundlib.h>
 #include <alsa/mixer.h>
 #define MAX_CMN_LEN 100
@@ -64,8 +65,9 @@ int main(int argc, char *argv[])
     SetAlsaMasterVolume(100);
     system("mocp -l tone.wav");
     while (true) {
-        if (sleepC < 10) {
+        if (sleepC < 2) {
             sleepC++;
+            sleep(1)
         } else {
             sleepC = 0;
             if (inc) {
