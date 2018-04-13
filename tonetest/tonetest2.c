@@ -62,10 +62,8 @@ int main(int argc, char *argv[])
     int cVol = 100;
     int inc = false;
     SetAlsaMasterVolume(100);
+    system("mocp -l tone.wav");
     while (true) {
-        if (!CheckMOC()) {
-            system("mocp -l tone.wav");
-        }
         if (sleepC < 10) {
             sleepC++;
         } else {
